@@ -16,7 +16,7 @@ const USERS = [
     { id: 8, name: "Tom Riddle", age: 28 },
     { id: 9, name: "Bolo", age: 23 },
   ];
-  
+
 const SearchBar = () => {
 
     
@@ -28,10 +28,13 @@ const SearchBar = () => {
  
         const filteredName = (e) => {
             const keyword = e.target.value;
+            // const objectProperties = Object.getOwnPropertyNames(USERS);
 
             if(keyword !== ''){
                 const filteredResult = USERS.filter((user) => {
-                    return ( !isNaN(keyword) ?  user.age.toString().includes(keyword) : user.name.toLowerCase().includes(keyword.toLowerCase()) );
+                    return  user.age.toString().indexOf(keyword) >= 0 ||
+                    user.name.toLowerCase().indexOf(keyword.toLowerCase()) >= 0;
+                    
                     
                 });
                 setFoundUsers(filteredResult);
